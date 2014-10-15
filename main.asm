@@ -356,6 +356,8 @@ drawBox:
 	push	R12
 	push	R13
 
+	call	#setAddress
+
 	mov.w	#8,		R8			; use r8 as a counter for the number of columns
 								; that have been drawn
 drawLine:
