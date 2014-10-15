@@ -23,8 +23,8 @@ STE2007_POWERCTRL_ALL_ON:		.equ	0x07
 STE2007_DISPLAYNORMAL:			.equ	0xA6
 STE2007_DISPLAYON:				.equ	0xAF
 
-X_INIT:							.equ	0x08
-Y_INIT:							.equ	0x01
+X_INIT:							.equ	0x10
+Y_INIT:							.equ	0x10
 
  	.text								; BOILERPLATE	Assemble into program memory
 	.retain								; BOILERPLATE	Override ELF conditional linking and retain current section
@@ -82,7 +82,7 @@ mainBtn:
 ;	inc		R11							; just let the columm overflow after 92 buttons
 	mov		R10, R12					; increment the row
 	mov		R11, R13					; and column of the next beam
-;	call	#setAddress					; we draw
+	call	#setAddress					; we draw
 	call	#drawBox
 
 	jmp		while1
@@ -356,7 +356,7 @@ drawBox:
 	push	R12
 	push	R13
 
-	call	#setAddress
+;	call	#setAddress
 
 	mov.w	#8,		R8			; use r8 as a counter for the number of columns
 								; that have been drawn
